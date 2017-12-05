@@ -1,0 +1,5 @@
+Hangman Project 1.0
+1) Load up screen - Display title and opening rules to start a new game
+	1a) "Welcome to Hangman to start press the "enter" button.
+2) Start game - change screen to game display with new instructions printed on screen.
+	2a) Game display:
