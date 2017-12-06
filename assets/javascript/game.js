@@ -20,6 +20,7 @@ listReader(wordList3);
 screen as an alternitive to pressing the buttons below.*/
 
 
+
 /*gameDisplay info - meat of programming will go here.
 things to be added: -User will be given a word from the above arraylist to select from.
 					-Key up the buttons to help with navigation.
@@ -30,6 +31,8 @@ things to be added: -User will be given a word from the above arraylist to selec
 					-When a user gets hung give them a point for a lost game.
 					-If a game is lost then ask if they wish to continue.
 */
+
+
 
 /*gameOver display info - final screen data will go here.
 */
