@@ -19,24 +19,11 @@ var wordList3 = ["bat", "mace", "sword", "dagger", "halbard"];
 /*Index information - user able to press enter to start the game into the next
 screen as an alternitive to pressing the buttons below.
 Use for the key --start-game-- */
-
-//variation 1 - this works and
-// window.addEventListener("keydown", checkKeyPress, false);
-
-// function checkKeyPress(ent){
-// 	if (ent.keyCode === "13") {
-// 		alert("the 'enter' button has been pressed")
-// 	}
-// }
-
-//variation 2:
-document.getElementByID("start-game").addEventListener("keydown", function(enter){
-	event.preventDefault();
-	if (enter.keyCode === "13") {
+document.getElementById('Start Game').addEventListener("onkeyup", function(event) {event.preventDefault();
+	if (enter.keyCode === 13) {
 		document.getElementByID("start-game").click();
 	}
 });
-
 
 /*gameDisplay info - meat of programming will go here.
 things to be added: -User will be given a word from the above arraylist to select from.
@@ -49,7 +36,28 @@ things to be added: -User will be given a word from the above arraylist to selec
 					-If a game is lost then ask if they wish to continue.
 */
 
+// 1 - select one of the three arrays to use -- Next pull a word from that array that the player will pick from.
+	//Show directions for play in top right hand corner for the user - CSS this will be absolute so that it sits ontop of the interface.
+
+// 2 - For each letter in the selected word create that number of "_" as a hint to the length of the word.
+
+// 3 - User can now press any key a-z followed by enter or the "submit letter" button to check if they guessed right.
+	//If all the letters are revealed then add one to user score - generate new word - reset all fields and starts game over.
+
+
+// 4 - If user guesses wrong display error alert - This will be replaced later on by applying a section of the hanged man via css.  
+		// Clear guess field after the guess.  If too many wrong guesses move to Game Over screen.
+
+// 5 - If the user guesses correctly then fill in the letter the user selected and clear 
+
 
 
 /*gameOver display info - final screen data will go here.
+Items requried: -Key event listener for Y/y for button Yes and N/n for button No
 */
+	//Key event for Yes
+	// document.getElementById('X').addEventListener("onkeyup", function(event) {event.preventDefault();
+	// 	if (enter.keyCode === 13) {
+	// 		document.getElementByID("X").click();
+	// 	}
+	// });
