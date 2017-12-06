@@ -6,19 +6,36 @@ var wordList2 = ["mage", "thief", "knight", "paladin", "sorcerer"];
 var wordList3 = ["bat", "mace", "sword", "dagger", "halbard"];
 
 //practice function code for looping through an array.
-function listReader(arr){
-	for (var i = 0; i < arr.length; i++){
-		console.log(arr[i]);
-	}
-	console.log("--------")
-}
-listReader(wordList1);
-listReader(wordList2);
-listReader(wordList3);
+// function listReader(arr){
+// 	for (var i = 0; i < arr.length; i++){
+// 		console.log(arr[i]);
+// 	}
+// 	console.log("--------")
+// }
+// listReader(wordList1);
+// listReader(wordList2);
+// listReader(wordList3);
 
 /*Index information - user able to press enter to start the game into the next
-screen as an alternitive to pressing the buttons below.*/
+screen as an alternitive to pressing the buttons below.
+Use for the key --start-game-- */
 
+//variation 1 - this works and
+// window.addEventListener("keydown", checkKeyPress, false);
+
+// function checkKeyPress(ent){
+// 	if (ent.keyCode === "13") {
+// 		alert("the 'enter' button has been pressed")
+// 	}
+// }
+
+//variation 2:
+document.getElementByID("start-game").addEventListener("keydown", function(enter){
+	event.preventDefault();
+	if (enter.keyCode === "13") {
+		document.getElementByID("start-game").click();
+	}
+});
 
 
 /*gameDisplay info - meat of programming will go here.
