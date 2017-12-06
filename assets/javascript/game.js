@@ -19,9 +19,11 @@ var wordList3 = ["bat", "mace", "sword", "dagger", "halbard"];
 /*Index information - user able to press enter to start the game into the next
 screen as an alternitive to pressing the buttons below.
 Use for the key --start-game-- */
-document.getElementById('Start Game').addEventListener("onkeyup", function(event) {event.preventDefault();
-	if (enter.keyCode === 13) {
-		document.getElementByID("start-game").click();
+window.addEventListener("keyup", function(event) {
+	event.preventDefault();
+
+	if (event.keyCode === 13) {
+		document.getElementById("start-game").click();
 	}
 });
 
