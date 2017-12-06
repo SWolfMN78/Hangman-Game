@@ -11,30 +11,47 @@
 <body>
 	<!-- Game will load up on this page showing a basic gallows and rope -->
 	<h1>Welcome to Fantasy Hangman</h1>
-	<h2>The rules are simple, you'll be given a word in blanks and you are to fill in the word.  If you guess wrong too many times you will be hung...man.  Simply type in a charaacter then press enter.  IF the character you typed is a valid letter in word you're guessing it and any similarties will be shown.  If you guess wrong a piece of the hangman will appear.  If the entire man appears it's game over.
+	<h2 class="game-rules">The rules are simple, you'll be given a word in blanks and you are to fill in the word.  If you guess wrong too many times you will be hung...man.  Simply type in a character then press enter.  If the character you typed is a valid letter in word you're guessing it and any similarties will be shown.  If you guess wrong a piece of the hangman will appear.  If the entire man appears it's game over.
 
-	<!-- Display clue for what the word -->
+	<!-- Display clue for what the word - placed the quotes outside the lable so that I don't need to re-apply them each time that the 
+		word is adjusted. -->
+	<h3>
+		The word for you to guess is:
+		"<label id="secret-word">_ _ _ _ _ _ _</label>"
+	</h3>
 
+	<!-- Here ths display will show information for what the user has guessed. -->
+	<h3>
+		The letters which have been guessed are:<label id="guessed-letters"></label>
+	</h3>
+
+	<!-- Here the user will enter their guessed letter - setting the maxlength of 1 allows only 1 character. -->
+	<h3>
+		Your guess: <input type="text" id="user-guess" name="user-guess" class="user-guess" maxlength="1" />
+	</h3>
+		<!-- Submit letter button here - make this one larger than the rest -->
+	Click here to submit your entry or simply press "enter".
+	<br>
+	<a class="btn btn-primary submit-answer" id="submit-answer" href="#" role="button" onclick="UserGuess()">Submit Letter</a>
+	
+	<br>
+	<br>
 	<!-- Display score here. - -->
 	<h4>
 		<ul>
-			<li>Total games won:</li>
-			<li>Total games lost:</li>
+			<li>Total games won: <label id="games-won">0</label></li>
+			<li>Total games lost: <label id="games-lost">0</label></li>
 		</ul>
 	</h4>
 	
 
 	<!-- New game button here -->
-	<p>Start a new game?</p>
-	<a class="btn btn-primary new-game" href="#" role="button">New Game?</a>
-
-	<!-- Submit letter button here - make this one larger than the rest -->
-	<p>Click here to submit your entry or simply press "enter".</p>
-	<a class="btn btn-primary submit-answer" href="#" role="button">Submit Letter</a>
+	Start a new game?<br>
+	<a class="btn btn-primary new-game" id="new-game" href="#" role="button">New Game?</a>
 
 	<!-- End the game here ** Be sure to ask the user if they want to end ** -->
-	<p>End the current game?</p>
-	<a class="btn btn-primary end-game" href="gameOver.html" role="button">End Game</a>
+	<br>End the current game?<br>
+	<a class="btn btn-primary end-game" id="end-game" href="gameOver.html" role="button">End Game</a>
 
 	<script src='assets/javascript/game.js'></script>
 

@@ -1,9 +1,12 @@
 var gamesWon = 0; // this will increase beyond 0 if a round is won.
 var gamesLost = 0; // this will increase beyond 0 if a round is lost.
-var letterCheck; // this may be used to track the user's inputted letter.
-var wordList1 = ["dog", "wolf", "demon", "dragon", "demagorgan"];
-var wordList2 = ["mage", "thief", "knight", "paladin", "sorcerer"];
-var wordList3 = ["bat", "mace", "sword", "dagger", "halbard"];
+var failedGuesses = 0;
+var maxFailedGuesses = 5;
+var letterCheck = ""; // this may be used to track the user's inputted letter.
+var wordList1 = ["dog", "wolf", "demon", "dragon", "demagorgan", "mage", "thief", "knight", "paladin", "sorcerer", "bat", "mace", "sword", "dagger", "halbard"];
+var secretWord = "pizza";
+var displayWord = "";
+
 
 //practice function code for looping through an array.
 // function listReader(arr){
@@ -20,12 +23,52 @@ var wordList3 = ["bat", "mace", "sword", "dagger", "halbard"];
 screen as an alternitive to pressing the buttons below.
 Use for the key --start-game-- */
 window.addEventListener("keyup", function(event) {
-	event.preventDefault();
-
 	if (event.keyCode === 13) {
 		document.getElementById("start-game").click();
 	}
 });
+
+function UserGuess() {
+	var guessedLetter;
+
+	guessedLetter = document.getElementById("user-guess").value;
+	document.getElementById("user-guess").value = "";
+
+	if (letterCheck.indexOf	(guessedLetter) > -1)
+	{
+		alert("You already guessed that letter");
+		return;
+	}
+
+	letterCheck += guessedLetter;
+
+	UpdateDisplayWord();
+
+	if (displayWord.indexOf("_") === -1) {
+		gamesWon += 1;
+	}
+	if (secretWord.indexOf(guessedLetter) === -1){
+		//failed guess
+
+	}
+}
+function UpdateDisplayWord(){
+	var currentLetter;
+
+	displayWord = "";
+
+	for (var i = 0; i < secretWord.length; i++){
+		currentLetter = secretWord.substring(i, i + 1);
+
+		if (letterCheck.indexOf(currentLetter) === -1){
+			currentLetter = "_";
+		}
+
+		displayWord += currentLetter + " ";
+	}
+
+	document.getElementById("secret-word").innerHTML = displayWord;
+}
 
 /*gameDisplay info - meat of programming will go here.
 things to be added: -User will be given a word from the above arraylist to select from.
@@ -54,12 +97,24 @@ things to be added: -User will be given a word from the above arraylist to selec
 
 
 
+//This part is for the buttons of the gameDisplay screen:
+window.addEventListener("keyup", function(event) {
+	//submit letter button
+	if (event.keyCode === 13) {
+		document.getElementById("submit-answer").click();
+	}
+});
+
+
 /*gameOver display info - final screen data will go here.
 Items requried: -Key event listener for Y/y for button Yes and N/n for button No
 */
-	//Key event for Yes
-	// document.getElementById('X').addEventListener("onkeyup", function(event) {event.preventDefault();
-	// 	if (enter.keyCode === 13) {
-	// 		document.getElementByID("X").click();
+//was considering this code but figured to comment it out after considering that this is not a common function of most websites.
+	// window.addEventListener("keyup", function(event) {
+	// 	if (event.keyCode === 89 || event.keyCode === 121) {
+	// 		document.getElementById("yes-restart").click();
+	// 	}
+	// 	if (event.keyCode === 78 || event.keyCode === 110) {
+	// 		document.getElementById("no-restart").click();
 	// 	}
 	// });
