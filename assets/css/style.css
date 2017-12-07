@@ -1,3 +1,51 @@
-.hidden{
+/* Opening Page CSS Items */
+.Game-Start-Music{
 	display: none;
+}
+
+.mainpage-h1{
+	color: white;
+}
+
+.mainpage-h2{
+	color: white;
+	font-size: 14pt;
+}
+
+/* Game Board CSS Items */
+.Game-Play-Music{
+	display: none;
+}
+
+.hidden{
+	display: none; /* removed this from the screen because I didn't feel it fits in well.*/
+}
+
+.user-guess{
+	text-transform: lowercase;
+}
+
+.guessed-letters{
+	text-transform: lowercase; /* Does not appear to be converting the string to lower...*/
+}
+
+.secret-word{
+	text-transform: lowercase;
+}
+
+
+/* Game Over CSS Items */
+.Game-Over-Music{
+	display: none
+}
+
+.buttons{
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+
+.Try-Again{
+	color:white;
+	text-decoration-style: strong;
 }

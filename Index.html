@@ -2,24 +2,36 @@
 <html lang="en-us">
 <head>
 	<meta charset="utf-8">
-	<title>Hangman Game - Opening Page</title>
+	<title>Fantasy Hangman Game - Opening Page</title>
 
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
 
 </head>
-<body>
-	<h1>
-		SJ's Hangman
+<body background ="assets/images/Main_Menu_Image.jpg">
+
+<!-- 	<div class="mainPageImage">
+		<body background img="assets/images/Main_Menu_Image.jpg" alt="Fantasy Start Game">
+	</div> -->
+
+	<h1 class="mainpage-h1">
+		Fantasy Hangman
 		<!-- User should be able to either press "Enter" or use the button to start.-->
-		<h2> Please press 'Enter' to start the game or press the button below!</h2>
+		<h2 class="mainpage-h2"> Please press 'Enter' to start the game or press the button below!</h2>
 	</h1>
 
 	<!-- Start button will go here. The button will link to the game display page. -->
 	<a class="btn btn-primary start-game" id="start-game" href="gameDisplay.html" role="button">Start Game</a>
 	
 	<!-- if the player press the button or hits "enter then the game will start." -->
+
+	<!-- Get some simple music to play as an opener-->
+	<audio autoplay class="Game-Start-Music">
+		<source src="assets/sounds/Game_Menu_Message_of_Darkness.mp3" type="audio/ogg">
+	</audio>
+	
+
 
 	<script src='assets/javascript/game.js'></script>
 

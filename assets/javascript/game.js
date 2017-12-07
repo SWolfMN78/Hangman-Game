@@ -8,26 +8,24 @@ var secretWord;
 var displayWord = "";
 
 
-//practice function code for looping through an array.
-// function listReader(arr){
-// 	for (var i = 0; i < arr.length; i++){
-// 		console.log(arr[i]);
-// 	}
-// 	console.log("--------")
-// }
-// listReader(wordList1);
-// listReader(wordList2);
-// listReader(wordList3);
+/*practice function code for looping through an array.
+	function listReader(arr){
+ 	for (var i = 0; i < arr.length; i++){
+		console.log(arr[i]);
+ 	}
+ 	console.log("--------")
+	}
+ listReader(wordList1);
+ listReader(wordList2);
+ listReader(wordList3); */
 
-/*Index information - user able to press enter to start the game into the next
-screen as an alternitive to pressing the buttons below.
+/*Index information - user able to press enter to start the game into the next screen as an alternitive to pressing the buttons below.
 Use for the key --start-game-- */
 window.addEventListener("keyup", function(event) {
 	if (event.keyCode === 13) {
 		document.getElementById("start-game").click();
 	}
 });
-
 
 /*gameDisplay info - meat of programming will go here.
 things to be added: -User will be given a word from the above arraylist to select from.
@@ -40,13 +38,12 @@ things to be added: -User will be given a word from the above arraylist to selec
 					-If a game is lost then ask if they wish to continue.
 					*/
 
-
 //When the window loads up run the preset function for the controls behind the page load so that the stage is set for the player.
 window.onload = pageLoad;
 
 /* Pull a random word from the array and load it into the game. 
-Be sure to show directions for play in top right hand corner for the user - 
-CSS this will be absolute so that it sits ontop of the interface. Set */
+	Be sure to show directions for play in top right hand corner for the user - 
+	CSS this will be absolute so that it sits ontop of the interface.*/
 function pageLoad(){
 	secretWord = wordList1[Math.floor(Math.random() * wordList1.length)];
 
@@ -62,9 +59,9 @@ function pageLoad(){
 	failedGuesses = 0;
 }
 
-/* make a function which will handle the information guessed by the user.*/
-// User can now press any key a-z followed by enter or the "submit letter" button to check if they guessed right.
-	//If all the letters are revealed then add one to user score - generate new word - reset all fields and starts game over.
+/* make a function which will handle the information guessed by the user.
+	User can now press any key a-z followed by enter or the "submit letter" button to check if they guessed right.
+	If all the letters are revealed then add one to user score - generate new word - reset all fields and starts game over. */
 function UserGuess() {
 	var guessedLetter;
 
@@ -158,6 +155,7 @@ document.getElementById("end-game").addEventListener("click", function(event){
 	}
 	event.preventDefault();
 });
+
 
 
 /*gameOver display info - final screen data will go here.

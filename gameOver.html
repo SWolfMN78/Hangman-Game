@@ -8,16 +8,24 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
 </head>
-<body>
-		<!-- The Game is OVER!!-->
-		<h1> Game OVER!!! Try again? </h1>
-
-		<!-- New game button here -->
-		<a class="btn btn-primary yes-restart" id="yes-restart" href="gameDisplay.html" role="button">Yes</a>
-		<a class="btn btn-primary no-restart" id="no-restart" href="index.html" role="button">No</a>
-
+<body background="assets/images/Game_Over.jpg">
 	
-	<script src='assets/javascript/game.js'></script>
+	<!-- The Game is OVER!!-->
+	<h1 class="text-center font-weight-bold text-white"> Try again? </h1>
+
+	<!-- New game button here -->
+	<div class="buttons">
+		<a class="btn btn-primary yes-restart center mr-2" id="yes-restart" href="gameDisplay.html" role="button">Yes</a>
+		<a class="btn btn-primary no-restart" id="no-restart" href="index.html" role="button">No</a>
+	</div>
+
+
+	<audio autoplay class="Game-Over-Music">
+		<source src="assets/sounds/Game_Over.mp3" type="audio/ogg">
+	</audio>
+		
+
+		<script src='assets/javascript/game.js'></script>
 
 </body>
 </html>
