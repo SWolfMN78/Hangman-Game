@@ -40,41 +40,41 @@ things to be added: -User will be given a word from the above arraylist to selec
 					-If a game is lost then ask if they wish to continue.
 					*/
 
-// 1 - select one of the three arrays to use -- Next pull a word from that array that the player will pick from.
-	//Show directions for play in top right hand corner for the user - CSS this will be absolute so that it sits ontop of the interface.
 
-// 2 - For each letter in the selected word create that number of "_" as a hint to the length of the word.
-
-// 3 - User can now press any key a-z followed by enter or the "submit letter" button to check if they guessed right.
-	//If all the letters are revealed then add one to user score - generate new word - reset all fields and starts game over.
-
-
-// 4 - If user guesses wrong display error alert - This will be replaced later on by applying a section of the hanged man via css.  
-		// Clear guess field after the guess.  If too many wrong guesses move to Game Over screen.
-
-// 5 - If the user guesses correctly then fill in the letter the user selected and clear 
-
+//When the window loads up run the preset function for the controls behind the page load so that the stage is set for the player.
 window.onload = pageLoad;
 
+/* Pull a random word from the array and load it into the game. 
+Be sure to show directions for play in top right hand corner for the user - 
+CSS this will be absolute so that it sits ontop of the interface. Set */
 function pageLoad(){
 	secretWord = wordList1[Math.floor(Math.random() * wordList1.length)];
 
 	UpdateDisplayWord();
+	//empty out the guessed letters.
 	document.getElementById("guessed-letters").innerHTML = "";
 	letterCheck = "";
 
+	//insure that the key-entry is set to the textarea.
+	document.getElementById("user-guess").focus();
+
+	//not forgetting to set failedguesses back to 0.
 	failedGuesses = 0;
 }
 
+/* make a function which will handle the information guessed by the user.*/
+// User can now press any key a-z followed by enter or the "submit letter" button to check if they guessed right.
+	//If all the letters are revealed then add one to user score - generate new word - reset all fields and starts game over.
 function UserGuess() {
 	var guessedLetter;
 
+	//set the 
 	guessedLetter = document.getElementById("user-guess").value;
 	document.getElementById("user-guess").value = "";
 
-	if (letterCheck.indexOf	(guessedLetter) > -1)
+	if (letterCheck.indexOf	(guessedLetter) > -1) //insure that the user will not pick the same letter again.
 	{
-		alert("You already guessed that letter");
+		alert("You already guessed that letter"); 
 		return; //returns will leave the function so that the code below does not run.
 	}
 
@@ -86,6 +86,7 @@ function UserGuess() {
 	CheckGameOver(guessedLetter); //pass this information into the function below.
 }
 
+//if the game is won or lost function to be written
 function CheckGameOver(guessedLetter){
 	if (displayWord.indexOf("_") === -1) {
 		gamesWon += 1;
@@ -93,20 +94,31 @@ function CheckGameOver(guessedLetter){
 		alert("Congrats!!! Now for a new challenge");
 		pageLoad();
 		return;
-
 	}
 
-	if (secretWord.indexOf(guessedLetter) === -1){
-		//failed guess - Place code in for if failed
-
+	/*  If user guesses wrong display error alert - This will be replaced later on by applying a section of the hanged man via css.  
+	in the meantime - simply track if the game is over according to the maxFailedGuesses variable created. 5 chances = head, arm, arm, leg, leg = death. 
+	 Clear guess field after the guess.  If too many wrong guesses move to Game Over screen. */
+	if (secretWord.indexOf(guessedLetter) === -1){ //in other words if the user's guess does not line up - remove 1 from max guesses.
+		maxFailedGuesses -= 1; //remove 1 from max guesses until it hits 0
+		if (maxFailedGuesses < 1){ // in here is where a portion of the hanged man will appear.   <<=====
+			alert("You have run out of guesses, a good man has been hung.");
+			pageLoad();
+				//not sure why but the new word being loaded is seen at first.
+			return;
+		}
 	}
 }
 
+/* Create a function which will handle updating the displayed word.  For each letter in the selected word create that 
+number of "_" as a hint to the length of the word. */
 function UpdateDisplayWord(){
 	var currentLetter;
 
+	//set the display word to blank just to be on the safe side of things.
 	displayWord = "";
 
+	/*create a for loop which will run over the length of the secret word that was pulled in, then move past each letter to check it */
 	for (var i = 0; i < secretWord.length; i++){
 		currentLetter = secretWord.substring(i, i + 1);
 
@@ -114,28 +126,31 @@ function UpdateDisplayWord(){
 			currentLetter = "_";
 		}
 
+		//combine the information of displayWord and the currentletter + a space
 		displayWord += currentLetter + " ";
 	}
-
+	//
 	document.getElementById("secret-word").innerHTML = displayWord;
 }
 
 /*This part is for the buttons of the gameDisplay screen:*/
 // Was going to use this but after playing around with the code it feels more fluid to not have this button in the controls.
 window.addEventListener("keyup", function(event) {
-		//submit letter button 
+		//submit letter button - 13 is the keyCode for "enter".
 		if (event.keyCode === 13) {
 			document.getElementById("submit-answer").click();
 		}
 	});
 
-//confirm if the user 
+//confirm if the user wants to actually start a new game or not.
 document.getElementById("new-game").addEventListener("click", function(){
 	if (confirm("Are you sure you want to start a new game? Your current score will be lost.")) {
 		pageLoad();
 	}
 });
 
+//confirm if the user wants to actually end the game - throw a warning then act on it.
+//used the event.preventDefault to insure that if they select to stay in the game that the game remains.
 document.getElementById("end-game").addEventListener("click", function(event){
 	if (confirm("Are you sure you want to end the game? Your current score will be lost.")) {
 		alert("You're leaving the game! Thank you for playing");
