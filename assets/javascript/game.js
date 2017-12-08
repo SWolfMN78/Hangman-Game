@@ -100,6 +100,7 @@ function CheckGameOver(guessedLetter){
 		maxFailedGuesses -= 1; //remove 1 from max guesses until it hits 0
 		if (maxFailedGuesses < 1){ // in here is where a portion of the hanged man will appear.   <<=====
 			alert("You have run out of guesses, a good man has been hung.");
+			gamesLost += 1;
 			pageLoad();
 				//not sure why but the new word being loaded is seen at first.
 			return;
